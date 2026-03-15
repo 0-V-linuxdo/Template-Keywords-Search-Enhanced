@@ -627,19 +627,36 @@
             cursor: pointer;
         }
 
-        .${namespace}-label-color-container,
+        .${namespace}-label-color-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
         .${namespace}-options-color-container {
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
             min-width: 0;
+            box-sizing: border-box;
         }
 
         .${namespace}-option-color-item,
         .${namespace}-tag-preview,
         .${namespace}-option-tag-preview {
             min-width: 0;
+        }
+
+        .${namespace}-tag-preview {
+            flex: 1 1 auto;
+        }
+
+        .${namespace}-color-input {
+            flex: 0 0 auto;
         }
 
         .${namespace}-color-input,
@@ -777,11 +794,20 @@
                 align-items: flex-start;
             }
 
+            .${namespace}-label-color-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
             .${namespace}-settings-label,
             .${namespace}-option-settings-label,
             .${namespace}-edit-filter-label {
                 min-width: 0;
                 width: 100%;
+            }
+
+            .${namespace}-color-input {
+                align-self: flex-start;
             }
 
             .${namespace}-settings-select,
