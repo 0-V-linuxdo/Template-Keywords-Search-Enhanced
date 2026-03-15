@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         [Template] Keywords Search Enhanced [20260313] v1.0.3
+// @name         [Template] Keywords Search Enhanced [20260313] v1.0.4
 // @namespace    0_V userscripts/[Keywords Search Enhanced] Template
 // @description  Shared runtime template for the Keywords Search Enhanced site wrappers.
-// @version      [20260313] v1.0.3
-// @update-log   Fix settings modal color row layout
+// @version      [20260313] v1.0.4
+// @update-log   Restore legacy settings color preview layout
 //
 // @grant        none
 //
@@ -25,7 +25,7 @@
 (function initKSETemplateRuntime(global) {
     'use strict';
 
-    const TEMPLATE_VERSION = '[20260313] v1.0.3';
+    const TEMPLATE_VERSION = '[20260313] v1.0.4';
     const bootstrappedSites = global.__KSE_TEMPLATE_BOOTSTRAPPED__ || (global.__KSE_TEMPLATE_BOOTSTRAPPED__ = new Set());
 
     function deepClone(value) {
@@ -481,10 +481,16 @@
             font-weight: 700;
         }
 
-        .${namespace}-filter-grid,
-        .${namespace}-color-grid {
+        .${namespace}-filter-grid {
             display: grid;
             gap: 12px;
+        }
+
+        .${namespace}-color-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-sizing: border-box;
         }
 
         .${namespace}-edit-filter-groups {
@@ -514,7 +520,14 @@
         .${namespace}-color-item {
             flex-direction: column;
             align-items: stretch;
-            gap: 12px;
+            gap: 8px;
+            border-bottom: 1px solid var(--container-border);
+            padding-bottom: 10px;
+        }
+
+        .${namespace}-color-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .${namespace}-settings-label,
@@ -630,44 +643,86 @@
         .${namespace}-label-color-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
             min-width: 0;
             box-sizing: border-box;
+            flex-wrap: nowrap;
         }
 
         .${namespace}-options-color-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 6px;
             width: 100%;
             min-width: 0;
+            margin-left: 20px;
             box-sizing: border-box;
         }
 
-        .${namespace}-option-color-item,
+        .${namespace}-option-color-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            flex-wrap: nowrap;
+        }
+
+        .${namespace}-tag-preview,
+        .${namespace}-option-tag-preview {
+            font-size: 13px;
+            padding: 5px 10px;
+            width: fit-content;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex-shrink: 1;
+            margin-left: 10px;
+            margin-right: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
         .${namespace}-tag-preview,
         .${namespace}-option-tag-preview {
             min-width: 0;
         }
 
-        .${namespace}-tag-preview {
-            flex: 1 1 auto;
-        }
-
         .${namespace}-color-input {
-            flex: 0 0 auto;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            margin-left: auto;
+            flex-shrink: 0;
         }
 
         .${namespace}-color-input,
         .${namespace}-option-color-input {
-            width: 44px;
-            height: 36px;
             padding: 0;
             border: 1px solid var(--container-border);
-            border-radius: 10px;
             background: transparent;
             cursor: pointer;
+        }
+
+        .${namespace}-color-input:hover,
+        .${namespace}-option-color-input:hover {
+            transform: scale(1.05);
+        }
+
+        .${namespace}-option-settings-label {
+            font-size: 13px;
+            font-weight: 400;
+            min-width: 100px;
+            width: 120px;
+        }
+
+        .${namespace}-option-color-input {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            margin-left: auto;
+            flex-shrink: 0;
         }
 
         .${namespace}-settings-footer {
@@ -787,16 +842,19 @@
 
             .${namespace}-filter-item,
             .${namespace}-settings-row,
-            .${namespace}-edit-filter-group,
-            .${namespace}-option-color-item,
-            .${namespace}-color-item {
+            .${namespace}-edit-filter-group {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
             .${namespace}-label-color-container {
-                flex-direction: column;
-                align-items: stretch;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .${namespace}-options-color-container {
+                margin-left: 0;
+                gap: 5px;
             }
 
             .${namespace}-settings-label,
@@ -804,10 +862,41 @@
             .${namespace}-edit-filter-label {
                 min-width: 0;
                 width: 100%;
+                margin-bottom: 5px;
             }
 
-            .${namespace}-color-input {
-                align-self: flex-start;
+            .${namespace}-tag-preview,
+            .${namespace}-option-tag-preview {
+                font-size: 12px;
+                padding: 4px 8px;
+                margin: 0;
+                width: auto;
+                max-width: 100%;
+                min-width: 120px;
+                flex-grow: 1;
+            }
+
+            .${namespace}-preview-badge,
+            .${namespace}-option-preview-badge {
+                font-size: 10px;
+                padding: 0 4px;
+            }
+
+            .${namespace}-color-input,
+            .${namespace}-option-color-input {
+                margin-left: 0;
+                margin-top: 0;
+                flex-shrink: 0;
+            }
+
+            .${namespace}-option-color-item {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .${namespace}-color-item {
+                gap: 5px;
+                padding-bottom: 8px;
             }
 
             .${namespace}-settings-select,
