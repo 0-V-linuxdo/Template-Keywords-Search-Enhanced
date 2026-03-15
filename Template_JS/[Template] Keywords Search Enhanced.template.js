@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         [Template] Keywords Search Enhanced [20260315] v1.0.0
+// @name         [Template] Keywords Search Enhanced [20260313] v1.0.1
 // @namespace    0_V userscripts/[Keywords Search Enhanced] Template
 // @description  Shared runtime template for the Keywords Search Enhanced site wrappers.
-// @version      [20260315] v1.0.0
-// @update-log   Add userscript header for the shared template build artifact
+// @version      [20260313] v1.0.1
+// @update-log   Refine dropdown-related styles in the shared template
 //
 // @grant        none
 //
@@ -25,7 +25,7 @@
 (function initKSETemplateRuntime(global) {
     'use strict';
 
-    const TEMPLATE_VERSION = '[20260315] v1.0.0';
+    const TEMPLATE_VERSION = '[20260313] v1.0.1';
     const bootstrappedSites = global.__KSE_TEMPLATE_BOOTSTRAPPED__ || (global.__KSE_TEMPLATE_BOOTSTRAPPED__ = new Set());
 
     function deepClone(value) {
