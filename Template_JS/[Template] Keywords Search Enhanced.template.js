@@ -390,11 +390,11 @@
             right: -40px;
             width: 220px;
             border: 1px solid var(--container-border);
-            border-radius: 8px;
+            border-radius: 12px;
             background: var(--modal-bg);
             box-sizing: border-box;
             z-index: 1200;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         .${namespace}-centered-modal {
@@ -403,11 +403,10 @@
             left: 50% !important;
             right: auto !important;
             width: 90vw !important;
-            max-width: 450px !important;
+            max-width: 520px !important;
             max-height: 90vh;
             transform: translate(-50%, -50%) !important;
             overflow-y: auto;
-            overflow-x: hidden;
         }
 
         .${namespace}-edit-modal {
@@ -430,7 +429,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            padding: 8px 12px;
+            padding: 10px 14px;
             border-bottom: 1px solid var(--container-border);
             box-sizing: border-box;
         }
@@ -438,7 +437,7 @@
         .${namespace}-sync-modal-header h2 {
             margin: 0;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .${namespace}-sync-modal-close-btn {
@@ -465,11 +464,8 @@
         .${namespace}-edit-modal-body {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            padding: 16px;
-            max-height: 70vh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            gap: 16px;
+            padding: 14px;
             box-sizing: border-box;
         }
 
@@ -480,9 +476,9 @@
         }
 
         .${namespace}-settings-subtitle {
-            margin: 0 0 8px;
+            margin: 0;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 700;
         }
 
         .${namespace}-filter-grid,
@@ -542,12 +538,14 @@
             text-align: left;
         }
 
-        .${namespace}-modern-input {
+        .${namespace}-modern-input,
+        .${namespace}-edit-filter-select,
+        .${namespace}-settings-select {
             width: 100%;
             min-height: 42px;
-            padding: 8px;
+            padding: 10px 14px;
             border: 1px solid var(--input-border);
-            border-radius: 4px;
+            border-radius: 10px;
             background: var(--input-bg);
             color: var(--input-text);
             font: inherit;
@@ -598,26 +596,19 @@
         .${namespace}-edit-checkbox-container {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             flex: 1;
+            max-height: 180px;
             overflow-y: auto;
-            box-sizing: border-box;
-        }
-
-        .${namespace}-checkbox-container {
-            max-height: 120px;
-        }
-
-        .${namespace}-edit-checkbox-container {
-            max-height: 160px;
             padding-right: 4px;
+            box-sizing: border-box;
         }
 
         .${namespace}-checkbox-wrapper,
         .${namespace}-edit-checkbox-wrapper {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .${namespace}-feature-checkbox,
@@ -629,7 +620,6 @@
         .${namespace}-checkbox-label,
         .${namespace}-edit-checkbox-label {
             cursor: pointer;
-            box-sizing: border-box;
         }
 
         .${namespace}-label-color-container,
@@ -764,10 +754,6 @@
         @media (max-width: 768px) {
             .${namespace}-keyword-search-container {
                 padding: 10px 12px 14px;
-            }
-
-            .${namespace}-centered-modal {
-                max-width: 400px !important;
             }
 
             .${namespace}-filter-item,
