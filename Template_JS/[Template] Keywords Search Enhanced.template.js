@@ -390,11 +390,11 @@
             right: -40px;
             width: 220px;
             border: 1px solid var(--container-border);
-            border-radius: 12px;
+            border-radius: 8px;
             background: var(--modal-bg);
             box-sizing: border-box;
             z-index: 1200;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .${namespace}-centered-modal {
@@ -403,10 +403,11 @@
             left: 50% !important;
             right: auto !important;
             width: 90vw !important;
-            max-width: 520px !important;
+            max-width: 450px !important;
             max-height: 90vh;
             transform: translate(-50%, -50%) !important;
             overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .${namespace}-edit-modal {
@@ -429,7 +430,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-bottom: 1px solid var(--container-border);
             box-sizing: border-box;
         }
@@ -437,7 +438,7 @@
         .${namespace}-sync-modal-header h2 {
             margin: 0;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .${namespace}-sync-modal-close-btn {
@@ -464,8 +465,11 @@
         .${namespace}-edit-modal-body {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            padding: 14px;
+            gap: 15px;
+            padding: 16px;
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
             box-sizing: border-box;
         }
 
@@ -476,15 +480,22 @@
         }
 
         .${namespace}-settings-subtitle {
-            margin: 0;
+            margin: 0 0 8px;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 500;
         }
 
         .${namespace}-filter-grid,
         .${namespace}-color-grid {
             display: grid;
             gap: 12px;
+        }
+
+        .${namespace}-edit-filter-groups {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-sizing: border-box;
         }
 
         .${namespace}-filter-item,
@@ -506,28 +517,37 @@
         }
 
         .${namespace}-settings-label,
-        .${namespace}-option-settings-label,
+        .${namespace}-option-settings-label {
+            min-width: 120px;
+            width: 120px;
+            font-size: 14px;
+            font-weight: 400;
+            white-space: nowrap;
+            text-align: left;
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
         .${namespace}-edit-field-label,
         .${namespace}-edit-filter-label {
-            min-width: 84px;
             font-size: 14px;
-            font-weight: 500;
             box-sizing: border-box;
         }
 
         .${namespace}-edit-filter-label {
-            min-width: 120px;
+            min-width: 80px;
+            width: 120px;
             font-weight: 400;
+            white-space: nowrap;
+            text-align: left;
         }
 
-        .${namespace}-modern-input,
-        .${namespace}-edit-filter-select,
-        .${namespace}-settings-select {
+        .${namespace}-modern-input {
             width: 100%;
             min-height: 42px;
-            padding: 10px 14px;
+            padding: 8px;
             border: 1px solid var(--input-border);
-            border-radius: 10px;
+            border-radius: 4px;
             background: var(--input-bg);
             color: var(--input-text);
             font: inherit;
@@ -536,14 +556,28 @@
 
         .${namespace}-edit-filter-select,
         .${namespace}-settings-select {
-            padding: 8px 12px;
+            flex: 1;
+            width: auto;
+            max-width: 100%;
+            min-height: 42px;
+            padding: 8px;
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            background: var(--input-bg);
+            color: var(--input-text);
+            font: inherit;
+            box-sizing: border-box;
+        }
+
+        .${namespace}-edit-filter-select,
+        .${namespace}-settings-select {
             cursor: pointer;
             appearance: none;
             -webkit-appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 10px center;
-            padding-right: 30px;
+            background-position: right 8px center;
+            padding-right: 24px;
         }
 
         .${namespace}-modern-input:focus,
@@ -564,19 +598,26 @@
         .${namespace}-edit-checkbox-container {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             flex: 1;
-            max-height: 180px;
             overflow-y: auto;
-            padding-right: 4px;
             box-sizing: border-box;
+        }
+
+        .${namespace}-checkbox-container {
+            max-height: 120px;
+        }
+
+        .${namespace}-edit-checkbox-container {
+            max-height: 160px;
+            padding-right: 4px;
         }
 
         .${namespace}-checkbox-wrapper,
         .${namespace}-edit-checkbox-wrapper {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .${namespace}-feature-checkbox,
@@ -588,6 +629,7 @@
         .${namespace}-checkbox-label,
         .${namespace}-edit-checkbox-label {
             cursor: pointer;
+            box-sizing: border-box;
         }
 
         .${namespace}-label-color-container,
@@ -612,9 +654,15 @@
         .${namespace}-settings-footer {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 15px;
             flex-wrap: wrap;
+        }
+
+        .${namespace}-settings-footer.${namespace}-edit-modal-footer {
+            align-items: center;
+            justify-content: flex-end;
         }
 
         .${namespace}-settings-btn {
@@ -623,14 +671,22 @@
             justify-content: center;
             min-width: 88px;
             min-height: 36px;
-            padding: 0 14px;
+            padding: 7px 14px;
             border: none !important;
-            border-radius: 10px;
+            border-radius: 4px;
             cursor: pointer;
-            font: inherit;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1;
             transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
             box-sizing: border-box;
+        }
+
+        .${namespace}-settings-footer.${namespace}-edit-modal-footer .${namespace}-settings-btn {
+            min-width: 0;
+            min-height: 28px;
+            padding: 4px 10px;
+            border-radius: 8px;
         }
 
         .${namespace}-settings-btn:hover {
@@ -724,19 +780,30 @@
                 padding: 10px 12px 14px;
             }
 
+            .${namespace}-centered-modal {
+                max-width: 400px !important;
+            }
+
             .${namespace}-filter-item,
             .${namespace}-settings-row,
             .${namespace}-edit-filter-group,
             .${namespace}-option-color-item,
             .${namespace}-color-item {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: flex-start;
             }
 
             .${namespace}-settings-label,
             .${namespace}-option-settings-label,
             .${namespace}-edit-filter-label {
+                width: 100%;
                 min-width: 0;
+            }
+
+            .${namespace}-settings-select,
+            .${namespace}-edit-filter-select {
+                width: 100%;
+                margin-top: 5px;
             }
 
             .${namespace}-sync-modal {
