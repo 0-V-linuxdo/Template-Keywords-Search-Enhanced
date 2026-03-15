@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         [Template] Keywords Search Enhanced [20260315] v1.0.0
+// @name         [Template] Keywords Search Enhanced [20260315] v1.0.1
 // @namespace    0_V userscripts/[Keywords Search Enhanced] Template
 // @description  Shared runtime template for the Keywords Search Enhanced site wrappers.
-// @version      [20260315] v1.0.0
-// @update-log   Add userscript header for the shared template build artifact
+// @version      [20260315] v1.0.1
+// @update-log   Restore original modal footer button styles
 //
 // @grant        none
 //
@@ -25,7 +25,7 @@
 (function initKSETemplateRuntime(global) {
     'use strict';
 
-    const TEMPLATE_VERSION = '[20260315] v1.0.0';
+    const TEMPLATE_VERSION = '[20260315] v1.0.1';
     const bootstrappedSites = global.__KSE_TEMPLATE_BOOTSTRAPPED__ || (global.__KSE_TEMPLATE_BOOTSTRAPPED__ = new Set());
 
     function deepClone(value) {
@@ -654,15 +654,9 @@
         .${namespace}-settings-footer {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .${namespace}-settings-footer.${namespace}-edit-modal-footer {
-            align-items: center;
             justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .${namespace}-settings-btn {
@@ -671,22 +665,14 @@
             justify-content: center;
             min-width: 88px;
             min-height: 36px;
-            padding: 7px 14px;
+            padding: 0 14px;
             border: none !important;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            line-height: 1;
+            font: inherit;
+            font-weight: 700;
             transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
             box-sizing: border-box;
-        }
-
-        .${namespace}-settings-footer.${namespace}-edit-modal-footer .${namespace}-settings-btn {
-            min-width: 0;
-            min-height: 28px;
-            padding: 4px 10px;
-            border-radius: 8px;
         }
 
         .${namespace}-settings-btn:hover {
