@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         [Template] Keywords Search Enhanced [20260313] v1.0.2
+// @name         [Template] Keywords Search Enhanced [20260313] v1.0.3
 // @namespace    0_V userscripts/[Keywords Search Enhanced] Template
 // @description  Shared runtime template for the Keywords Search Enhanced site wrappers.
-// @version      [20260313] v1.0.2
-// @update-log   Fix modal layout regressions and color preview overflow
+// @version      [20260313] v1.0.3
+// @update-log   Fix settings modal color row layout
 //
 // @grant        none
 //
@@ -25,7 +25,7 @@
 (function initKSETemplateRuntime(global) {
     'use strict';
 
-    const TEMPLATE_VERSION = '[20260313] v1.0.2';
+    const TEMPLATE_VERSION = '[20260313] v1.0.3';
     const bootstrappedSites = global.__KSE_TEMPLATE_BOOTSTRAPPED__ || (global.__KSE_TEMPLATE_BOOTSTRAPPED__ = new Set());
 
     function deepClone(value) {
