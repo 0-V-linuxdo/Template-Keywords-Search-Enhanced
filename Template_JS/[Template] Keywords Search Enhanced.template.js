@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         [Template] Keywords Search Enhanced [20260315] v1.0.1
+// @name         [Template] Keywords Search Enhanced [20260313] v1.0.2
 // @namespace    0_V userscripts/[Keywords Search Enhanced] Template
 // @description  Shared runtime template for the Keywords Search Enhanced site wrappers.
-// @version      [20260315] v1.0.1
-// @update-log   Restore original modal footer button styles
+// @version      [20260313] v1.0.2
+// @update-log   Fix modal layout regressions and color preview overflow
 //
 // @grant        none
 //
@@ -25,7 +25,7 @@
 (function initKSETemplateRuntime(global) {
     'use strict';
 
-    const TEMPLATE_VERSION = '[20260315] v1.0.1';
+    const TEMPLATE_VERSION = '[20260313] v1.0.2';
     const bootstrappedSites = global.__KSE_TEMPLATE_BOOTSTRAPPED__ || (global.__KSE_TEMPLATE_BOOTSTRAPPED__ = new Set());
 
     function deepClone(value) {
@@ -507,9 +507,14 @@
         }
 
         .${namespace}-multi-select-item,
-        .${namespace}-edit-features-group,
-        .${namespace}-color-item {
+        .${namespace}-edit-features-group {
             align-items: flex-start;
+        }
+
+        .${namespace}-color-item {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
         }
 
         .${namespace}-settings-label,
@@ -628,6 +633,13 @@
             flex-direction: column;
             gap: 10px;
             width: 100%;
+            min-width: 0;
+        }
+
+        .${namespace}-option-color-item,
+        .${namespace}-tag-preview,
+        .${namespace}-option-tag-preview {
+            min-width: 0;
         }
 
         .${namespace}-color-input,
