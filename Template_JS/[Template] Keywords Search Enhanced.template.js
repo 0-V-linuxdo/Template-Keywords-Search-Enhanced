@@ -506,18 +506,29 @@
         }
 
         .${namespace}-settings-label,
-        .${namespace}-option-settings-label,
+        .${namespace}-option-settings-label {
+            min-width: 120px;
+            width: 120px;
+            font-size: 14px;
+            font-weight: 400;
+            white-space: nowrap;
+            text-align: left;
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
         .${namespace}-edit-field-label,
         .${namespace}-edit-filter-label {
-            min-width: 84px;
             font-size: 14px;
-            font-weight: 500;
             box-sizing: border-box;
         }
 
         .${namespace}-edit-filter-label {
-            min-width: 120px;
+            min-width: 80px;
+            width: 120px;
             font-weight: 400;
+            white-space: nowrap;
+            text-align: left;
         }
 
         .${namespace}-modern-input {
@@ -534,7 +545,9 @@
 
         .${namespace}-edit-filter-select,
         .${namespace}-settings-select {
-            width: 100%;
+            flex: 1;
+            width: auto;
+            max-width: 100%;
             min-height: 42px;
             padding: 8px;
             border: 1px solid var(--input-border);
@@ -543,10 +556,6 @@
             color: var(--input-text);
             font: inherit;
             box-sizing: border-box;
-        }
-
-        .${namespace}-edit-filter-select,
-        .${namespace}-settings-select {
             cursor: pointer;
             appearance: none;
             -webkit-appearance: none;
@@ -554,6 +563,12 @@
             background-repeat: no-repeat;
             background-position: right 8px center;
             padding-right: 24px;
+        }
+
+        .${namespace}-edit-filter-select option,
+        .${namespace}-settings-select option {
+            background: var(--input-bg);
+            color: var(--input-text);
         }
 
         .${namespace}-modern-input:focus,
@@ -736,7 +751,11 @@
 
             .${namespace}-filter-item,
             .${namespace}-settings-row,
-            .${namespace}-edit-filter-group,
+            .${namespace}-edit-filter-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
             .${namespace}-option-color-item,
             .${namespace}-color-item {
                 flex-direction: column;
@@ -746,7 +765,14 @@
             .${namespace}-settings-label,
             .${namespace}-option-settings-label,
             .${namespace}-edit-filter-label {
+                width: 100%;
                 min-width: 0;
+            }
+
+            .${namespace}-settings-select,
+            .${namespace}-edit-filter-select {
+                width: 100%;
+                margin-top: 5px;
             }
 
             .${namespace}-sync-modal {
